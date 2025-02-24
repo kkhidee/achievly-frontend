@@ -41,6 +41,7 @@ export default defineConfig(() => {
         mutation: {
           methods: ["post", "put", "delete", "patch"],
         },
+        suspense: false,
         query: {
           methods: ["get"],
           importPath: "@tanstack/react-query",

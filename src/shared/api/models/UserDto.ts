@@ -3,20 +3,20 @@ export type UserDto = {
    * @description User ID
    * @type number
    */
-  id: number;
+  id: number
   /**
-   * @description Email
+   * @description Email пользователя
    * @type string
    */
-  email: string;
+  email: string
   /**
    * @description Имя пользователя
    * @type string
    */
-  username: string;
+  username: string
   /**
    * @description Изображение пользователя
    * @type string
    */
-  picture: string;
-};
+  picture: string
+}

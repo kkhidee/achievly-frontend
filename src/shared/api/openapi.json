@@ -1,10 +1,34 @@
 {
     "openapi": "3.0.0",
     "paths": {
+        "/auth/check": {
+            "get": {
+                "operationId": "checkAuth",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    },
+                    "401": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Check auth",
+                "tags": [
+                    "Auth"
+                ]
+            }
+        },
         "/users/profile": {
             "get": {
                 "operationId": "getProfile",
-                "summary": "Get profile",
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -28,6 +52,7 @@
                         }
                     }
                 },
+                "summary": "Get profile",
                 "tags": [
                     "Users"
                 ]
@@ -36,7 +61,6 @@
         "/goals": {
             "get": {
                 "operationId": "getGoals",
-                "summary": "Get goals",
                 "parameters": [
                     {
                         "name": "status",
@@ -72,13 +96,13 @@
                         }
                     }
                 },
+                "summary": "Get goals",
                 "tags": [
                     "Goals"
                 ]
             },
             "post": {
                 "operationId": "createGoal",
-                "summary": "Create goal",
                 "parameters": [],
                 "requestBody": {
                     "required": true,
@@ -105,6 +129,7 @@
                         }
                     }
                 },
+                "summary": "Create goal",
                 "tags": [
                     "Goals"
                 ]
@@ -113,7 +138,6 @@
         "/goals/history": {
             "get": {
                 "operationId": "getAllHistory",
-                "summary": "Get all history",
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -137,6 +161,7 @@
                         }
                     }
                 },
+                "summary": "Get all history",
                 "tags": [
                     "Goals"
                 ]
@@ -145,7 +170,6 @@
         "/goals/statistics": {
             "get": {
                 "operationId": "getStatistics",
-                "summary": "Get statistics",
                 "parameters": [
                     {
                         "name": "period",
@@ -181,6 +205,7 @@
                         }
                     }
                 },
+                "summary": "Get statistics",
                 "tags": [
                     "Goals"
                 ]
@@ -189,7 +214,6 @@
         "/goals/public": {
             "get": {
                 "operationId": "getPublicGoals",
-                "summary": "Get public goals",
                 "parameters": [
                     {
                         "name": "category",
@@ -233,6 +257,7 @@
                         }
                     }
                 },
+                "summary": "Get public goals",
                 "tags": [
                     "Goals"
                 ]
@@ -241,7 +266,6 @@
         "/goals/{id}": {
             "get": {
                 "operationId": "getGoal",
-                "summary": "Get goal",
                 "parameters": [
                     {
                         "name": "id",
@@ -274,13 +298,13 @@
                         }
                     }
                 },
+                "summary": "Get goal",
                 "tags": [
                     "Goals"
                 ]
             },
             "put": {
                 "operationId": "updateGoal",
-                "summary": "Update goal",
                 "parameters": [
                     {
                         "name": "id",
@@ -316,13 +340,13 @@
                         }
                     }
                 },
+                "summary": "Update goal",
                 "tags": [
                     "Goals"
                 ]
             },
             "patch": {
                 "operationId": "achieveGoal",
-                "summary": "Achieve goal",
                 "parameters": [
                     {
                         "name": "id",
@@ -348,13 +372,13 @@
                         }
                     }
                 },
+                "summary": "Achieve goal",
                 "tags": [
                     "Goals"
                 ]
             },
             "delete": {
                 "operationId": "deleteGoal",
-                "summary": "Delete goal",
                 "parameters": [
                     {
                         "name": "id",
@@ -380,6 +404,7 @@
                         }
                     }
                 },
+                "summary": "Delete goal",
                 "tags": [
                     "Goals"
                 ]
@@ -388,7 +413,6 @@
         "/goals/{id}/task/{taskId}": {
             "patch": {
                 "operationId": "toggleTaskComplete",
-                "summary": "Toggle task complete",
                 "parameters": [
                     {
                         "name": "taskId",
@@ -422,6 +446,7 @@
                         }
                     }
                 },
+                "summary": "Toggle task complete",
                 "tags": [
                     "Goals"
                 ]
@@ -430,7 +455,6 @@
         "/goals/{id}/habit/{habitId}": {
             "patch": {
                 "operationId": "toggleHabitComplete",
-                "summary": "Toggle habit complete",
                 "parameters": [
                     {
                         "name": "habitId",
@@ -464,6 +488,7 @@
                         }
                     }
                 },
+                "summary": "Toggle habit complete",
                 "tags": [
                     "Goals"
                 ]
@@ -472,7 +497,6 @@
         "/goals/{goalId}/task/{taskId}": {
             "delete": {
                 "operationId": "deleteTask",
-                "summary": "Delete task",
                 "parameters": [
                     {
                         "name": "taskId",
@@ -506,6 +530,7 @@
                         }
                     }
                 },
+                "summary": "Delete task",
                 "tags": [
                     "Goals"
                 ]
@@ -514,7 +539,6 @@
         "/goals/{goalId}/habit/{habitId}": {
             "delete": {
                 "operationId": "deleteHabit",
-                "summary": "Delete habit",
                 "parameters": [
                     {
                         "name": "habitId",
@@ -548,6 +572,7 @@
                         }
                     }
                 },
+                "summary": "Delete habit",
                 "tags": [
                     "Goals"
                 ]
@@ -555,8 +580,8 @@
         }
     },
     "info": {
-        "title": "Goal planner API",
-        "description": "Swagger API documentation for goal planner app",
+        "title": "Achievly API",
+        "description": "Swagger API documentation for Achievly app",
         "version": "3.1.0",
         "contact": {}
     },
@@ -564,31 +589,6 @@
     "servers": [],
     "components": {
         "schemas": {
-            "UserDto": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "number",
-                        "description": "User ID",
-                        "example": 1
-                    },
-                    "username": {
-                        "type": "string",
-                        "description": "Имя пользователя",
-                        "example": "Username"
-                    },
-                    "picture": {
-                        "type": "string",
-                        "description": "Изображение пользователя",
-                        "example": "https://picture.com"
-                    }
-                },
-                "required": [
-                    "id",
-                    "username",
-                    "picture"
-                ]
-            },
             "BadRequest": {
                 "type": "object",
                 "properties": {
@@ -609,6 +609,37 @@
                     "message",
                     "error",
                     "statusCode"
+                ]
+            },
+            "UserDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "description": "User ID",
+                        "example": 1
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Email пользователя",
+                        "example": "mail@mail.com"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Имя пользователя",
+                        "example": "Username"
+                    },
+                    "picture": {
+                        "type": "string",
+                        "description": "Изображение пользователя",
+                        "example": "https://picture.com"
+                    }
+                },
+                "required": [
+                    "id",
+                    "email",
+                    "username",
+                    "picture"
                 ]
             },
             "TaskEntity": {
@@ -847,12 +878,12 @@
                             "items": {
                                 "$ref": "#/components/schemas/HistoryGoalDto"
                             }
-                        }
+                        },
+                        "required": [
+                            "history"
+                        ]
                     }
-                },
-                "required": [
-                    "history"
-                ]
+                }
             },
             "StatisticsDto": {
                 "type": "object",

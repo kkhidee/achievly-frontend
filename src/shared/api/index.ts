@@ -1,3 +1,4 @@
+export type { CheckAuthQueryKey } from "./hooks/auth/useCheckAuth";
 export type { AchieveGoalMutationKey } from "./hooks/goals/useAchieveGoal";
 export type { CreateGoalMutationKey } from "./hooks/goals/useCreateGoal";
 export type { DeleteGoalMutationKey } from "./hooks/goals/useDeleteGoal";
@@ -13,6 +14,12 @@ export type { ToggleTaskCompleteMutationKey } from "./hooks/goals/useToggleTaskC
 export type { UpdateGoalMutationKey } from "./hooks/goals/useUpdateGoal";
 export type { GetProfileQueryKey } from "./hooks/users/useGetProfile";
 export type { AllHistoryDto } from "./models/AllHistoryDto";
+export type {
+  CheckAuth200,
+  CheckAuth401,
+  CheckAuthQueryResponse,
+  CheckAuthQuery,
+} from "./models/auth/CheckAuth";
 export type { BadRequest } from "./models/BadRequest";
 export type { GoalDto } from "./models/GoalDto";
 export type {
@@ -119,6 +126,11 @@ export type {
   GetProfileQuery,
 } from "./models/users/GetProfile";
 export type { AllHistoryDtoSchema } from "./zod/allHistoryDtoSchema";
+export type {
+  CheckAuth200Schema,
+  CheckAuth401Schema,
+  CheckAuthQueryResponseSchema,
+} from "./zod/auth/checkAuthSchema";
 export type { BadRequestSchema } from "./zod/badRequestSchema";
 export type { GoalDtoSchema } from "./zod/goalDtoSchema";
 export type {
@@ -211,6 +223,11 @@ export type {
   GetProfileQueryResponseSchema,
 } from "./zod/users/getProfileSchema";
 export {
+  checkAuthQueryKey,
+  checkAuthQueryOptions,
+  useCheckAuth,
+} from "./hooks/auth/useCheckAuth";
+export {
   achieveGoalMutationKey,
   useAchieveGoal,
 } from "./hooks/goals/useAchieveGoal";
@@ -278,6 +295,11 @@ export {
   GoalDtoCategoryEnum,
 } from "./models/GoalDto";
 export { allHistoryDtoSchema } from "./zod/allHistoryDtoSchema";
+export {
+  checkAuth200Schema,
+  checkAuth401Schema,
+  checkAuthQueryResponseSchema,
+} from "./zod/auth/checkAuthSchema";
 export { badRequestSchema } from "./zod/badRequestSchema";
 export { goalDtoSchema } from "./zod/goalDtoSchema";
 export {

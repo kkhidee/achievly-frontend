@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import { cn } from "@/app/lib/utils";
+import { useCheckAuth } from "@/shared/api";
+import { Loader } from "@/shared/ui/loader";
 
 export function CoreLayout({
   children,
@@ -8,6 +10,8 @@ export function CoreLayout({
   children: ReactNode;
   className?: string;
 }) {
+  const { isLoading } = useCheckAuth();
+
   return (
     <div className="flex h-dvh justify-center ">
       <div
@@ -16,7 +20,7 @@ export function CoreLayout({
           className,
         )}
       >
-        {children}
+        {isLoading ? <Loader /> : children}
       </div>
     </div>
   );
