@@ -10,7 +10,21 @@ export function CoreLayout({
   children: ReactNode;
   className?: string;
 }) {
-  const { isLoading } = useCheckAuth();
+  const { isLoading, isSuccess } = useCheckAuth();
+
+  if (!isSuccess || isLoading)
+    return (
+      <div className="flex h-dvh justify-center ">
+        <div
+          className={cn(
+            "relative flex size-full flex-col sm:max-w-[50vw]",
+            className,
+          )}
+        >
+          <Loader />
+        </div>
+      </div>
+    );
 
   return (
     <div className="flex h-dvh justify-center ">
@@ -20,7 +34,7 @@ export function CoreLayout({
           className,
         )}
       >
-        {isLoading ? <Loader /> : children}
+        {children}
       </div>
     </div>
   );
