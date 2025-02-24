@@ -5,9 +5,10 @@ import { Progress } from "@/shared/ui/progress";
 import { GoalCalendar } from "@/features/goal-calendar";
 import { useGoalBoardData } from "@/entities/goal-board/hooks/use-data";
 import { useGoalBoardHandlers } from "@/entities/goal-board/hooks/use-handlers";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { isDoneHabit } from "@/app/lib/utils";
 import { EmptyState } from "@/shared/ui/empty-state";
+import { RoutesEnum } from "@/app/constants/core";
 
 export function GoalBoard() {
   const [searchParams] = useSearchParams();
@@ -97,9 +98,12 @@ export function GoalBoard() {
           return (
             <div key={goal.id} className="flex flex-col gap-4 px-4">
               <div className="flex flex-nowrap items-center gap-4">
-                <span className="whitespace-nowrap text-sm font-medium text-neutral-400">
+                <Link
+                  to={`${RoutesEnum.Goals}/${goal.id}`}
+                  className="whitespace-nowrap text-sm font-medium text-neutral-400 transition duration-100 hover:text-white"
+                >
                   {goal.title}
-                </span>
+                </Link>
                 <div className="min-h-px w-full bg-neutral-700" />
               </div>
 
