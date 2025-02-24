@@ -27,7 +27,7 @@ export function TaskList({ readOnly }: TaskListProps) {
 
   const { control, trigger } = useFormContext<GoalDto>();
 
-  const { fields, append, update } = useFieldArray({
+  const { fields, append, update, remove } = useFieldArray({
     control,
     name: "tasks",
   });
@@ -94,6 +94,7 @@ export function TaskList({ readOnly }: TaskListProps) {
           key={field.id}
           task={field}
           onClick={() => handleCardClick(index)}
+          onDelete={!readOnly ? () => remove(index) : undefined}
         />
       ))}
 

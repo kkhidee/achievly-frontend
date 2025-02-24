@@ -26,7 +26,7 @@ export function HabitList({ readOnly }: HabitListProps) {
 
   const { control, trigger } = useFormContext<GoalDto>();
 
-  const { fields, append, update } = useFieldArray({
+  const { fields, append, update, remove } = useFieldArray({
     control,
     name: "habits",
   });
@@ -90,6 +90,7 @@ export function HabitList({ readOnly }: HabitListProps) {
           key={field.id}
           habit={field}
           onClick={() => handleCardClick(index)}
+          onDelete={!readOnly ? () => remove(index) : undefined}
         />
       ))}
 
