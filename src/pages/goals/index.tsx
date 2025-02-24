@@ -8,7 +8,7 @@ function GoalsPage() {
       defaultValue="ongoing"
       className="size-full max-h-full overflow-y-hidden"
     >
-      <TabsList className="mb-6 grid w-full grid-cols-2">
+      <TabsList className="mx-4 mb-6 grid grid-cols-2 sm:mx-0">
         <TabsTrigger value="ongoing">Текущие</TabsTrigger>
         <TabsTrigger value="achieved">Выполненные</TabsTrigger>
       </TabsList>

@@ -56,7 +56,7 @@ export function Statistics() {
   }, [data?.statistics, tabValue]);
 
   return (
-    <div className="flex h-full flex-col gap-3">
+    <div className="flex h-full flex-col gap-3 px-4 sm:px-0">
       <StatisticsIntervalTab
         tabValue={tabValue}
         handleTabChange={handleChangeTab}

@@ -35,7 +35,7 @@ function ProfilePage() {
   };
 
   return (
-    <div className="flex flex-col gap-y-6">
+    <div className="flex flex-col gap-y-6 px-4 sm:px-0">
       <Card className="bg-neutral-900">
         <CardContent className="p-4">
           <div className="flex gap-x-4">
@@ -64,9 +64,9 @@ function ProfilePage() {
                   Выйти из аккаунта
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="w-[95%] sm:w-full">
                 <DialogHeader>
-                  <DialogTitle>
+                  <DialogTitle className="sm:max-w-[90%]">
                     Вы уверены, что хотите выйти из своей учетной записи?
                   </DialogTitle>
                   <DialogDescription>
@@ -74,7 +74,7 @@ function ProfilePage() {
                     авторизоваться
                   </DialogDescription>
                 </DialogHeader>
-                <DialogFooter>
+                <DialogFooter className="flex gap-2">
                   <DialogClose asChild>
                     <Button>Отменить</Button>
                   </DialogClose>

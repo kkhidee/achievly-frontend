@@ -17,11 +17,13 @@ import {
   getAllHistoryQueryKey,
   getGoalQueryKey,
   getGoalsQueryKey,
+  getStatisticsQueryKey,
   GoalDtoStatusEnum,
   TaskEntity,
   useToggleTaskComplete,
 } from "@/shared/api";
 import { useQueryClient } from "@tanstack/react-query";
+import dayjs from "dayjs";
 
 type TaskDrawerProps = {
   open: boolean;
@@ -146,6 +148,17 @@ function TaskViewDrawer({
           queryClient
             .invalidateQueries({
               queryKey: getAllHistoryQueryKey(),
+            })
+            .then();
+
+          queryClient
+            .invalidateQueries({
+              queryKey: getStatisticsQueryKey({
+                period: [
+                  dayjs().weekday(0).format("YYYY-MM-DD"),
+                  dayjs().weekday(6).format("YYYY-MM-DD"),
+                ],
+              }),
             })
             .then();
 

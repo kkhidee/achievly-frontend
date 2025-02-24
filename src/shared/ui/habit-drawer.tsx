@@ -17,6 +17,7 @@ import {
   getAllHistoryQueryKey,
   getGoalQueryKey,
   getGoalsQueryKey,
+  getStatisticsQueryKey,
   GoalDtoStatusEnum,
   HabitEntity,
   useToggleHabitComplete,
@@ -24,6 +25,7 @@ import {
 import { getStartOfDayTimestamp } from "@/app/lib/utils";
 import { useMemo } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import dayjs from "dayjs";
 
 type HabitDrawerProps = {
   open: boolean;
@@ -150,6 +152,17 @@ function HabitViewDrawer({
           queryClient
             .invalidateQueries({
               queryKey: getAllHistoryQueryKey(),
+            })
+            .then();
+
+          queryClient
+            .invalidateQueries({
+              queryKey: getStatisticsQueryKey({
+                period: [
+                  dayjs().weekday(0).format("YYYY-MM-DD"),
+                  dayjs().weekday(6).format("YYYY-MM-DD"),
+                ],
+              }),
             })
             .then();
 

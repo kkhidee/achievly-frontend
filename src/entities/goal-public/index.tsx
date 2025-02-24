@@ -56,14 +56,14 @@ export function GoalPublic() {
 
   return (
     <div className="flex h-full flex-col gap-y-6 p-0.5">
-      <div className="relative shrink-0">
+      <div className="relative shrink-0 px-4 sm:px-0">
         <Input
           value={value}
           placeholder="Введите запрос"
-          className="pr-10 focus-visible:shadow-none"
+          className="pr-10 text-sm focus-visible:shadow-none sm:text-base"
           onChange={(event) => setValue(event.target.value)}
         />
-        <SearchIcon className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+        <SearchIcon className="absolute right-8 top-1/2 -translate-y-1/2 text-neutral-400 sm:right-3" />
       </div>
       <ToggleGroup
         type="single"

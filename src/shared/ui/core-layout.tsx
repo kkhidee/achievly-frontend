@@ -17,7 +17,7 @@ export function CoreLayout({
       <div className="flex h-dvh justify-center ">
         <div
           className={cn(
-            "relative flex size-full flex-col sm:max-w-[50vw]",
+            "relative flex size-full flex-col sm:max-w-[100vw]",
             className,
           )}
         >
@@ -30,7 +30,7 @@ export function CoreLayout({
     <div className="flex h-dvh justify-center ">
       <div
         className={cn(
-          "relative flex size-full flex-col sm:max-w-[50vw]",
+          "relative flex size-full flex-col sm:max-w-[100vw] md:max-w-[70vw] lg:max-w-[60vw] xl:max-w-[45vw]",
           className,
         )}
       >
