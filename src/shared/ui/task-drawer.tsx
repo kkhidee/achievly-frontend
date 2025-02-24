@@ -24,6 +24,9 @@ import {
 } from "@/shared/api";
 import { useQueryClient } from "@tanstack/react-query";
 import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
+
+dayjs.extend(weekday);
 
 type TaskDrawerProps = {
   open: boolean;
@@ -138,32 +141,32 @@ function TaskViewDrawer({
               queryKey: getGoalQueryKey({ id: String(goalId) }),
             })
             .then();
-
-          queryClient
-            .invalidateQueries({
-              queryKey: getGoalsQueryKey({ status: GoalDtoStatusEnum.ongoing }),
-            })
-            .then();
-
-          queryClient
-            .invalidateQueries({
-              queryKey: getAllHistoryQueryKey(),
-            })
-            .then();
-
-          queryClient
-            .invalidateQueries({
-              queryKey: getStatisticsQueryKey({
-                period: [
-                  dayjs().weekday(0).format("YYYY-MM-DD"),
-                  dayjs().weekday(6).format("YYYY-MM-DD"),
-                ],
-              }),
-            })
-            .then();
-
-          onDrawerClose();
         }
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getGoalsQueryKey({ status: GoalDtoStatusEnum.ongoing }),
+          })
+          .then();
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getAllHistoryQueryKey(),
+          })
+          .then();
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getStatisticsQueryKey({
+              period: [
+                dayjs().weekday(0).format("YYYY-MM-DD"),
+                dayjs().weekday(6).format("YYYY-MM-DD"),
+              ],
+            }),
+          })
+          .then();
+
+        onDrawerClose();
       },
     },
   });

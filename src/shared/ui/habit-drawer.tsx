@@ -26,6 +26,9 @@ import { getStartOfDayTimestamp } from "@/app/lib/utils";
 import { useMemo } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
+
+dayjs.extend(weekday);
 
 type HabitDrawerProps = {
   open: boolean;
@@ -142,32 +145,32 @@ function HabitViewDrawer({
               queryKey: getGoalQueryKey({ id: String(goalId) }),
             })
             .then();
-
-          queryClient
-            .invalidateQueries({
-              queryKey: getGoalsQueryKey({ status: GoalDtoStatusEnum.ongoing }),
-            })
-            .then();
-
-          queryClient
-            .invalidateQueries({
-              queryKey: getAllHistoryQueryKey(),
-            })
-            .then();
-
-          queryClient
-            .invalidateQueries({
-              queryKey: getStatisticsQueryKey({
-                period: [
-                  dayjs().weekday(0).format("YYYY-MM-DD"),
-                  dayjs().weekday(6).format("YYYY-MM-DD"),
-                ],
-              }),
-            })
-            .then();
-
-          onDrawerClose();
         }
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getGoalsQueryKey({ status: GoalDtoStatusEnum.ongoing }),
+          })
+          .then();
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getAllHistoryQueryKey(),
+          })
+          .then();
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getStatisticsQueryKey({
+              period: [
+                dayjs().weekday(0).format("YYYY-MM-DD"),
+                dayjs().weekday(6).format("YYYY-MM-DD"),
+              ],
+            }),
+          })
+          .then();
+
+        onDrawerClose();
       },
     },
   });
