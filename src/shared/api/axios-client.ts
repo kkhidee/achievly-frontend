@@ -44,7 +44,7 @@ axiosInstance.interceptors.response.use(
   (config) => config,
   async (error) => {
     if (
-      error?.response?.status === 401 &&
+      (error?.response?.status === 401 || error?.response?.status === 403) &&
       error.config &&
       !error.config._isRetry
     ) {
