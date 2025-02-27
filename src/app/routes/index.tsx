@@ -3,16 +3,14 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { RoutesEnum } from "@/app/constants/core";
 
-import { RoutesLayout, Loader } from "@/shared/ui";
+import { CoreLayout, Loader } from "@/shared/ui";
 
 const AuthPage = lazy(() => import("@/pages/auth"));
-const GoalCreatePage = lazy(() => import("@/pages/goal-create"));
 const HomePage = lazy(() => import("@/pages/home"));
-const ExplorePage = lazy(() => import("@/pages/explore"));
-const StatisticsPage = lazy(() => import("@/pages/statistics"));
-const GoalsPage = lazy(() => import("@/pages/goals"));
-const GoalPage = lazy(() => import("@/pages/goal"));
-const ProfilePage = lazy(() => import("@/pages/profile"));
+const GoalsDashboardPage = lazy(() => import("@/pages/goals-dashboard"));
+const GoalsCalendarPage = lazy(() => import("@/pages/goals-calendar"));
+const GoalsPublicPage = lazy(() => import("@/pages/goals-public"));
+const GoalsStatisticsPage = lazy(() => import("@/pages/goals-statistics"));
 
 export const routes = createBrowserRouter([
   {
@@ -24,23 +22,7 @@ export const routes = createBrowserRouter([
     ),
   },
   {
-    path: RoutesEnum.GoalCreate,
-    element: (
-      <Suspense fallback={<Loader />}>
-        <GoalCreatePage />
-      </Suspense>
-    ),
-  },
-  {
-    path: `${RoutesEnum.Goals}/:id`,
-    element: (
-      <Suspense fallback={<Loader />}>
-        <GoalPage />
-      </Suspense>
-    ),
-  },
-  {
-    element: <RoutesLayout />,
+    element: <CoreLayout />,
     children: [
       {
         path: RoutesEnum.Home,
@@ -51,34 +33,34 @@ export const routes = createBrowserRouter([
         ),
       },
       {
-        path: RoutesEnum.Explore,
+        path: RoutesEnum.GoalsDashboard,
         element: (
           <Suspense fallback={<Loader />}>
-            <ExplorePage />
+            <GoalsDashboardPage />
           </Suspense>
         ),
       },
       {
-        path: RoutesEnum.Statistics,
+        path: RoutesEnum.GoalsCalendar,
         element: (
           <Suspense fallback={<Loader />}>
-            <StatisticsPage />
+            <GoalsCalendarPage />
           </Suspense>
         ),
       },
       {
-        path: RoutesEnum.Goals,
+        path: RoutesEnum.GoalsPublic,
         element: (
           <Suspense fallback={<Loader />}>
-            <GoalsPage />
+            <GoalsPublicPage />
           </Suspense>
         ),
       },
       {
-        path: RoutesEnum.Profile,
+        path: RoutesEnum.GoalsStatistics,
         element: (
           <Suspense fallback={<Loader />}>
-            <ProfilePage />
+            <GoalsStatisticsPage />
           </Suspense>
         ),
       },

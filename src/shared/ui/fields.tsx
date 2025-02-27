@@ -69,6 +69,7 @@ TitleField.displayName = "TitleField";
 function CategoryField<T extends FieldValues, K extends Path<T>>({
   control,
   label,
+  disabled,
 }: FormFieldProps<T, K>) {
   return (
     <FormField
@@ -81,6 +82,7 @@ function CategoryField<T extends FieldValues, K extends Path<T>>({
             <Select
               value={field.value || undefined}
               onValueChange={field.onChange}
+              disabled={disabled}
             >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Выберите категорию" />
@@ -108,6 +110,7 @@ CategoryField.displayName = "CategoryField";
 function TypeField<T extends FieldValues, K extends Path<T>>({
   control,
   label,
+  disabled,
 }: FormFieldProps<T, K>) {
   return (
     <FormField
@@ -120,6 +123,7 @@ function TypeField<T extends FieldValues, K extends Path<T>>({
             <Select
               value={field.value || undefined}
               onValueChange={field.onChange}
+              disabled={disabled}
             >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Выберите тип" />

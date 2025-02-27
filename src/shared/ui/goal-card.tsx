@@ -1,8 +1,7 @@
 import { GoalDto } from "@/shared/api";
 import { Badge } from "./badge";
-import { Calendar, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import {
-  formatTimestampDaysUntilDeadline,
   getCompletedHabitsCount,
   getCompletedTasksCount,
 } from "@/app/lib/utils";
@@ -12,24 +11,18 @@ import { Button } from "@/shared/ui/button";
 type GoalCardProps = {
   goal: GoalDto;
   completedView?: boolean;
-  deadlineView?: boolean;
   onClick?: (goal: GoalDto) => void;
 };
 
-export function GoalCard({
-  goal,
-  completedView = false,
-  deadlineView = false,
-  onClick,
-}: GoalCardProps) {
+function GoalCard({ goal, completedView = false, onClick }: GoalCardProps) {
   return (
-    <div className="flex items-center justify-between border-b border-b-neutral-800 py-4 last:border-b-0">
+    <div className="flex items-center justify-between rounded-md border border-accent p-3 transition duration-200 hover:bg-neutral-700/50">
       <div className="flex items-start gap-3">
-        <div className="flex size-[64px] items-center justify-center rounded-md bg-neutral-700">
-          <GoalCategoryIcon category={goal?.category || "default"} size={24} />
+        <div className="flex size-8 items-center justify-center rounded-md bg-neutral-700">
+          <GoalCategoryIcon category={goal?.category || "default"} size={18} />
         </div>
-        <div className="flex flex-col gap-3">
-          <span className="text-base font-medium">{goal.title}</span>
+        <div className="flex flex-col items-start gap-y-1">
+          <span className="text-sm font-medium">{goal.title}</span>
           <div className="flex items-center gap-2">
             <Badge variant="outline">
               Привычки{" "}
@@ -43,14 +36,6 @@ export function GoalCard({
               {goal?.tasks?.length || 0}
             </Badge>
           </div>
-          {!!goal?.deadlineTimestamp && deadlineView && (
-            <div className="flex items-center gap-2">
-              <Calendar size={16} />
-              <span className="text-xs">
-                {formatTimestampDaysUntilDeadline(goal.deadlineTimestamp)}
-              </span>
-            </div>
-          )}
         </div>
       </div>
       {onClick && (
@@ -67,3 +52,5 @@ export function GoalCard({
 }
 
 GoalCard.displayName = "GoalCard";
+
+export { GoalCard };

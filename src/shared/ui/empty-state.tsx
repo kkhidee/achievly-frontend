@@ -5,7 +5,7 @@ type EmptyStateProps = {
   condition: boolean;
 };
 
-export function EmptyState({ text, condition }: EmptyStateProps) {
+function EmptyState({ text, condition }: EmptyStateProps) {
   if (!condition) {
     return null;
   }
@@ -19,3 +19,5 @@ export function EmptyState({ text, condition }: EmptyStateProps) {
     </div>
   );
 }
+
+export { EmptyState };

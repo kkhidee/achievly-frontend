@@ -1,14 +1,5 @@
-import { CreateGoalDropdown } from "@/shared/ui";
-import { GoalBoard } from "@/entities/goal-board";
-
 function HomePage() {
-  return (
-    <div className="h-full">
-      <GoalBoard />
-
-      <CreateGoalDropdown />
-    </div>
-  );
+  return <div>main</div>;
 }
 
 export default HomePage;
