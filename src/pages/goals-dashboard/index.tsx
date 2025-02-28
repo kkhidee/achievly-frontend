@@ -17,17 +17,20 @@ import { useSearchParams } from "react-router-dom";
 import { cn, getStartOfDayTimestamp } from "@/app/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import dayjs from "dayjs";
+import { useMemo } from "react";
 
 function GoalsDashboardPage() {
   const [searchParams] = useSearchParams();
 
-  const date = searchParams.get("history-date")
-    ? new Date(
-        getStartOfDayTimestamp(
-          new Date(searchParams.get("history-date")!).getTime(),
-        ),
-      )
-    : new Date(getStartOfDayTimestamp());
+  const historyDate = searchParams.get("history-date");
+
+  const date = useMemo(
+    () =>
+      historyDate
+        ? new Date(Number(historyDate))
+        : new Date(getStartOfDayTimestamp()),
+    [historyDate],
+  );
 
   return (
     <div className="flex size-full flex-col gap-6 lg:flex-row">
