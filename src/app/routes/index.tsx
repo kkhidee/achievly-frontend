@@ -1,12 +1,11 @@
 import { lazy, Suspense } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import { RoutesEnum } from "@/app/constants/core";
 
 import { CoreLayout, Loader } from "@/shared/ui";
 
 const AuthPage = lazy(() => import("@/pages/auth"));
-const HomePage = lazy(() => import("@/pages/home"));
 const GoalsDashboardPage = lazy(() => import("@/pages/goals-dashboard"));
 const GoalsCalendarPage = lazy(() => import("@/pages/goals-calendar"));
 const GoalsPublicPage = lazy(() => import("@/pages/goals-public"));
@@ -26,11 +25,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: RoutesEnum.Home,
-        element: (
-          <Suspense fallback={<Loader />}>
-            <HomePage />
-          </Suspense>
-        ),
+        element: <Navigate to={RoutesEnum.GoalsDashboard} />,
       },
       {
         path: RoutesEnum.GoalsDashboard,

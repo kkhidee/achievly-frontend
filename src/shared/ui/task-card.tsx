@@ -10,7 +10,7 @@ type TaskCardProps = {
 
 export function TaskCard({ task, isCheckedVisible, onDelete }: TaskCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-md border px-4 py-2">
+    <div className="relative w-full overflow-hidden rounded-md border px-4 py-2">
       <div className="absolute left-0 top-0 h-full w-1 bg-sky-600" />
       <div className="flex  items-center justify-between gap-3">
         <div className="flex items-center gap-4">

@@ -1,4 +1,9 @@
 export type { CheckAuthQueryKey } from "./hooks/auth/useCheckAuth";
+export type { LogoutMutationKey } from "./hooks/auth/useLogout";
+export type { CreateEventsMutationKey } from "./hooks/events/useCreateEvents";
+export type { DeleteEventMutationKey } from "./hooks/events/useDeleteEvent";
+export type { GetEventsQueryKey } from "./hooks/events/useGetEvents";
+export type { UpdateEventMutationKey } from "./hooks/events/useUpdateEvent";
 export type { AchieveGoalMutationKey } from "./hooks/goals/useAchieveGoal";
 export type { CreateGoalMutationKey } from "./hooks/goals/useCreateGoal";
 export type { DeleteGoalMutationKey } from "./hooks/goals/useDeleteGoal";
@@ -20,7 +25,44 @@ export type {
   CheckAuthQueryResponse,
   CheckAuthQuery,
 } from "./models/auth/CheckAuth";
+export type {
+  Logout200,
+  Logout401,
+  LogoutMutationResponse,
+  LogoutMutation,
+} from "./models/auth/Logout";
 export type { BadRequest } from "./models/BadRequest";
+export type { CreateEventDto } from "./models/CreateEventDto";
+export type { EventDto } from "./models/EventDto";
+export type {
+  CreateEvents200,
+  CreateEvents400,
+  CreateEventsMutationRequest,
+  CreateEventsMutationResponse,
+  CreateEventsMutation,
+} from "./models/events/CreateEvents";
+export type {
+  DeleteEventPathParams,
+  DeleteEvent200,
+  DeleteEvent400,
+  DeleteEventMutationResponse,
+  DeleteEventMutation,
+} from "./models/events/DeleteEvent";
+export type {
+  GetEventsQueryParams,
+  GetEvents200,
+  GetEvents400,
+  GetEventsQueryResponse,
+  GetEventsQuery,
+} from "./models/events/GetEvents";
+export type {
+  UpdateEventPathParams,
+  UpdateEvent200,
+  UpdateEvent400,
+  UpdateEventMutationRequest,
+  UpdateEventMutationResponse,
+  UpdateEventMutation,
+} from "./models/events/UpdateEvent";
 export type { GoalDto } from "./models/GoalDto";
 export type {
   AchieveGoalPathParams,
@@ -131,7 +173,39 @@ export type {
   CheckAuth401Schema,
   CheckAuthQueryResponseSchema,
 } from "./zod/auth/checkAuthSchema";
+export type {
+  Logout200Schema,
+  Logout401Schema,
+  LogoutMutationResponseSchema,
+} from "./zod/auth/logoutSchema";
 export type { BadRequestSchema } from "./zod/badRequestSchema";
+export type { CreateEventDtoSchema } from "./zod/createEventDtoSchema";
+export type { EventDtoSchema } from "./zod/eventDtoSchema";
+export type {
+  CreateEvents200Schema,
+  CreateEvents400Schema,
+  CreateEventsMutationRequestSchema,
+  CreateEventsMutationResponseSchema,
+} from "./zod/events/createEventsSchema";
+export type {
+  DeleteEventPathParamsSchema,
+  DeleteEvent200Schema,
+  DeleteEvent400Schema,
+  DeleteEventMutationResponseSchema,
+} from "./zod/events/deleteEventSchema";
+export type {
+  GetEventsQueryParamsSchema,
+  GetEvents200Schema,
+  GetEvents400Schema,
+  GetEventsQueryResponseSchema,
+} from "./zod/events/getEventsSchema";
+export type {
+  UpdateEventPathParamsSchema,
+  UpdateEvent200Schema,
+  UpdateEvent400Schema,
+  UpdateEventMutationRequestSchema,
+  UpdateEventMutationResponseSchema,
+} from "./zod/events/updateEventSchema";
 export type { GoalDtoSchema } from "./zod/goalDtoSchema";
 export type {
   AchieveGoalPathParamsSchema,
@@ -227,6 +301,24 @@ export {
   checkAuthQueryOptions,
   useCheckAuth,
 } from "./hooks/auth/useCheckAuth";
+export { logoutMutationKey, useLogout } from "./hooks/auth/useLogout";
+export {
+  createEventsMutationKey,
+  useCreateEvents,
+} from "./hooks/events/useCreateEvents";
+export {
+  deleteEventMutationKey,
+  useDeleteEvent,
+} from "./hooks/events/useDeleteEvent";
+export {
+  getEventsQueryKey,
+  getEventsQueryOptions,
+  useGetEvents,
+} from "./hooks/events/useGetEvents";
+export {
+  updateEventMutationKey,
+  useUpdateEvent,
+} from "./hooks/events/useUpdateEvent";
 export {
   achieveGoalMutationKey,
   useAchieveGoal,
@@ -300,7 +392,39 @@ export {
   checkAuth401Schema,
   checkAuthQueryResponseSchema,
 } from "./zod/auth/checkAuthSchema";
+export {
+  logout200Schema,
+  logout401Schema,
+  logoutMutationResponseSchema,
+} from "./zod/auth/logoutSchema";
 export { badRequestSchema } from "./zod/badRequestSchema";
+export { createEventDtoSchema } from "./zod/createEventDtoSchema";
+export { eventDtoSchema } from "./zod/eventDtoSchema";
+export {
+  createEvents200Schema,
+  createEvents400Schema,
+  createEventsMutationRequestSchema,
+  createEventsMutationResponseSchema,
+} from "./zod/events/createEventsSchema";
+export {
+  deleteEventPathParamsSchema,
+  deleteEvent200Schema,
+  deleteEvent400Schema,
+  deleteEventMutationResponseSchema,
+} from "./zod/events/deleteEventSchema";
+export {
+  getEventsQueryParamsSchema,
+  getEvents200Schema,
+  getEvents400Schema,
+  getEventsQueryResponseSchema,
+} from "./zod/events/getEventsSchema";
+export {
+  updateEventPathParamsSchema,
+  updateEvent200Schema,
+  updateEvent400Schema,
+  updateEventMutationRequestSchema,
+  updateEventMutationResponseSchema,
+} from "./zod/events/updateEventSchema";
 export { goalDtoSchema } from "./zod/goalDtoSchema";
 export {
   achieveGoalPathParamsSchema,

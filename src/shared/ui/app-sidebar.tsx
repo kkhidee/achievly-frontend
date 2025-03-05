@@ -4,7 +4,6 @@ import {
   ChartNoAxesCombined,
   House,
   LayoutDashboard,
-  Share2,
 } from "lucide-react";
 
 import { SidebarNav } from "@/shared/ui/sidebar-nav";
@@ -39,11 +38,6 @@ const navItems = {
       icon: CalendarRange,
     },
     {
-      title: ROUTES_TITLE[RoutesEnum.GoalsPublic],
-      url: RoutesEnum.GoalsPublic,
-      icon: Share2,
-    },
-    {
       title: ROUTES_TITLE[RoutesEnum.GoalsStatistics],
       url: RoutesEnum.GoalsStatistics,
       icon: ChartNoAxesCombined,
@@ -68,7 +62,6 @@ function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarNav items={navItems.home} />
         <SidebarNav items={navItems.goals} label="Цели" />
       </SidebarContent>
       <SidebarFooter>

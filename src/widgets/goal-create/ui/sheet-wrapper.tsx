@@ -15,47 +15,36 @@ import {
   TitleField,
   TypeField,
 } from "@/shared/ui";
-import { ReactNode, useState } from "react";
-import { FormProvider, useForm, useWatch } from "react-hook-form";
+import { FormProvider, useFormContext, useWatch } from "react-hook-form";
 import { GoalDto } from "@/shared/api";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { HabitsList } from "@/features/habits-list";
 import { TasksList } from "@/features/tasks-list";
-import { DEFAULT_GOAL_FORM_VALUES } from "@/app/constants/goal";
-import { useGoalCreateOverlayHandlers } from "@/widgets/goal-create/hooks/use-overlay-handlers";
-import { createGoalDtoSchema } from "@/shared/zod";
+import { PlusIcon } from "lucide-react";
 
 type GoalCreateSheetWrapperProps = {
-  children: ReactNode;
-  isCreatePending: boolean;
-  onCreate: (values: GoalDto) => Promise<void>;
+  open: boolean;
+  isPending: boolean;
+  handleOpenChange: (value: boolean) => void;
+  handleCreate: () => void;
 };
 
 const GoalCreateSheetWrapper = ({
-  children,
-  isCreatePending,
-  onCreate,
+  open,
+  isPending,
+  handleOpenChange,
+  handleCreate,
 }: GoalCreateSheetWrapperProps) => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const form = useForm<GoalDto>({
-    defaultValues: DEFAULT_GOAL_FORM_VALUES,
-    resolver: zodResolver(createGoalDtoSchema),
-    mode: "onChange",
-    reValidateMode: "onChange",
-  });
+  const form = useFormContext<GoalDto>();
 
   const { habits, tasks } = useWatch({ control: form.control });
 
-  const { handleCreate, handleOpenChange } = useGoalCreateOverlayHandlers({
-    form,
-    setOpen,
-    onCreate,
-  });
-
   return (
     <Sheet open={open} onOpenChange={handleOpenChange}>
-      <SheetTrigger>{children}</SheetTrigger>
+      <SheetTrigger asChild>
+        <Button variant="secondary" className="mr-4 rounded-full">
+          <PlusIcon className="text-current" /> Создать цель
+        </Button>
+      </SheetTrigger>
       <SheetContent className="overflow-y-auto pb-0 sm:max-w-[40%]">
         <div className="relative flex min-h-full flex-col">
           <div className="flex h-full flex-1 flex-col">
@@ -101,9 +90,9 @@ const GoalCreateSheetWrapper = ({
             <Button
               className="w-full"
               onClick={handleCreate}
-              disabled={isCreatePending}
+              disabled={isPending}
             >
-              {isCreatePending ? <CircleLoader /> : "Создать цель"}
+              {isPending ? <CircleLoader /> : "Создать цель"}
             </Button>
           </SheetFooter>
         </div>

@@ -3,36 +3,60 @@ import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { GoalCreateDrawerWrapper } from "@/widgets/goal-create/ui/drawer-wrapper";
 import { GoalCreateSheetWrapper } from "@/widgets/goal-create/ui/sheet-wrapper";
 import { GoalDto } from "@/shared/api";
-import { PlusIcon } from "lucide-react";
+import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { DEFAULT_GOAL_FORM_VALUES } from "@/app/constants/goal";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createGoalDtoSchema } from "@/shared/zod";
 
 export function GoalCreate() {
   const isMobile = useIsMobile();
 
+  const [open, setOpen] = useState<boolean>(false);
+
+  const form = useForm<GoalDto>({
+    defaultValues: DEFAULT_GOAL_FORM_VALUES,
+    resolver: zodResolver(createGoalDtoSchema),
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+
   const { createGoal, isCreatePending } = useGoalCreateQueries();
 
-  const onCreate = async (values: GoalDto) => {
-    await createGoal({ data: values });
+  const handleOpenChange = (value: boolean) => {
+    setOpen(value);
+    if (!value) {
+      form.setValue("deadlineTimestamp", null);
+      form.reset();
+    }
   };
 
-  return isMobile ? (
-    <GoalCreateDrawerWrapper
-      isCreatePending={isCreatePending}
-      onCreate={onCreate}
-    >
-      <div className="mr-4 flex h-9 items-center justify-center gap-x-2 rounded-full bg-secondary p-2 text-sm font-medium text-secondary-foreground shadow-sm hover:bg-secondary/80 md:px-4 [&_svg]:size-4 [&_svg]:shrink-0">
-        <PlusIcon className="text-current" />
-        <span className="text-xs md:text-sm">Создать цель</span>
-      </div>
-    </GoalCreateDrawerWrapper>
-  ) : (
-    <GoalCreateSheetWrapper
-      isCreatePending={isCreatePending}
-      onCreate={onCreate}
-    >
-      <div className="absolute right-4 top-4 flex h-9 items-center justify-center gap-x-2 rounded-full bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground shadow-sm hover:bg-secondary/80 [&_svg]:size-4 [&_svg]:shrink-0">
-        <PlusIcon className="text-current" />
-        <span>Создать цель</span>
-      </div>
-    </GoalCreateSheetWrapper>
+  const handleCreate = () => {
+    form.trigger().then(async (valid) => {
+      if (valid) {
+        await createGoal({ data: form.getValues() });
+        handleOpenChange(false);
+      }
+    });
+  };
+
+  return (
+    <FormProvider {...form}>
+      {isMobile ? (
+        <GoalCreateDrawerWrapper
+          open={open}
+          isPending={isCreatePending}
+          handleOpenChange={handleOpenChange}
+          handleCreate={handleCreate}
+        />
+      ) : (
+        <GoalCreateSheetWrapper
+          open={open}
+          isPending={isCreatePending}
+          handleOpenChange={handleOpenChange}
+          handleCreate={handleCreate}
+        />
+      )}
+    </FormProvider>
   );
 }

@@ -15,7 +15,7 @@ export function HabitCard({
   onDelete,
 }: HabitCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-md border px-4 py-2">
+    <div className="relative w-full overflow-hidden rounded-md border px-4 py-2">
       <div className="absolute left-0 top-0 h-full w-1 bg-orange-600" />
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-col gap-2">

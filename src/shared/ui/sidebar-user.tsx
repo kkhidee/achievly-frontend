@@ -15,9 +15,11 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/ui/sidebar";
-import { UserDto } from "@/shared/api";
+import { useLogout, UserDto } from "@/shared/api";
 import { useMemo } from "react";
 import { Skeleton } from "@/shared/ui/skeleton";
+import { useNavigate } from "react-router-dom";
+import { RoutesEnum } from "@/app/constants/core";
 
 export function SidebarUser({
   user,
@@ -28,6 +30,10 @@ export function SidebarUser({
 }) {
   const { isMobile } = useSidebar();
 
+  const { mutateAsync } = useLogout();
+
+  const navigate = useNavigate();
+
   const userFallback = useMemo(() => {
     const parts = user?.username?.split(" ");
 
@@ -37,6 +43,11 @@ export function SidebarUser({
 
     return `${parts?.[0][0].toUpperCase()}${parts?.[0][1].toUpperCase()}`;
   }, [user?.username]);
+
+  const handleLogout = async () => {
+    await mutateAsync();
+    navigate(RoutesEnum.Auth);
+  };
 
   if (!user || isUserLoading) {
     return <Skeleton className="h-[48px] w-full rounded-md" />;
@@ -87,7 +98,7 @@ export function SidebarUser({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>
               <LogOut />
               Выйти из учетной записи
             </DropdownMenuItem>
