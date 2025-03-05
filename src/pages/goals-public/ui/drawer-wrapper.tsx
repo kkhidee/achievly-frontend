@@ -6,14 +6,6 @@ import {
   CategoryField,
   CircleLoader,
   DeadlineTimestampField,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   Drawer,
   DrawerContent,
   DrawerDescription,
@@ -44,7 +36,6 @@ const GoalsPublicDrawerWrapper = ({
   goal,
   children,
   isUpdatePending,
-  isDeletePending,
   onToggleType,
   onDelete,
 }: GoalsPublicDrawerWrapperProps) => {
@@ -57,7 +48,7 @@ const GoalsPublicDrawerWrapper = ({
     reValidateMode: "onChange",
   });
 
-  const { handleSetQuery, handleOpenChange, handleToggleType, handleDelete } =
+  const { handleSetQuery, handleOpenChange, handleToggleType } =
     useGoalsAchievedOverlayHandlers({
       goal,
       form,

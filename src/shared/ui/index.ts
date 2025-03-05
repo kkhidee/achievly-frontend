@@ -43,7 +43,6 @@ export {
   CollapsibleContent,
 } from "./collapsible";
 export { CoreLayout } from "./core-layout";
-export { CreateGoalDropdown } from "./create-goal-dropdown";
 export {
   Dialog,
   DialogPortal,
