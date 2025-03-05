@@ -14,7 +14,7 @@ import {
 } from "@/shared/api";
 import { DatesSetArg, EventContentArg, EventDropArg } from "@fullcalendar/core";
 import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Button, Popover, PopoverContent, PopoverTrigger } from "@/shared/ui";
 
@@ -97,12 +97,15 @@ function GoalsCalendarPage() {
     setPeriod([start, end]);
     searchParams.set("period-start", start);
     searchParams.set("period-end", end);
-    setSearchParams(searchParams);
   };
 
   const handleDelete = (info: EventContentArg) => {
     deleteEvent({ id: info.event.id }).then();
   };
+
+  useEffect(() => {
+    setSearchParams(searchParams);
+  }, [period]);
 
   return (
     <div className="flex size-full gap-x-4">
