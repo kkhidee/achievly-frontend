@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { Progress } from "@/shared/ui";
+import { EmptyState, Progress } from "@/shared/ui";
 import { useGoalsOverviewData } from "@/widgets/goals-overview/hooks/use-data";
 import { GoalsOverviewForm } from "@/widgets/goals-overview/ui/form";
 
@@ -19,7 +19,7 @@ export function GoalsOverview() {
   } = useGoalsOverviewData();
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex h-full flex-col gap-4">
       {!historyDate && (
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
@@ -44,7 +44,16 @@ export function GoalsOverview() {
         </div>
       )}
 
-      <div className="flex grow flex-col gap-4">
+      <div className="flex flex-1 grow flex-col gap-4">
+        <EmptyState
+          text={
+            historyDate
+              ? "В этот день не было доступных задач и привычек"
+              : "Нет доступных задач и привычек"
+          }
+          condition={!availableGoals?.length}
+        />
+
         {availableGoals.map((goal) => {
           if (!goal.habits.length && !goal.tasks.length) return null;
 

@@ -1,4 +1,4 @@
-import { GoalCard, Skeleton } from "@/shared/ui";
+import { EmptyState, GoalCard, Skeleton } from "@/shared/ui";
 import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { GoalOngoingSheetWrapper } from "@/widgets/goals-ongoing/ui/sheet-wrapper";
 import { GoalOngoingDrawerWrapper } from "@/widgets/goals-ongoing/ui/drawer-wrapper";
@@ -42,7 +42,8 @@ function GoalsOngoing() {
   }
 
   return (
-    <div className="flex flex-col gap-y-3">
+    <div className="flex h-full flex-col gap-y-3">
+      <EmptyState text="Нет текущих целей" condition={!goals?.length} />
       {...(goals || [])?.map((goal) =>
         isMobile ? (
           <GoalOngoingDrawerWrapper

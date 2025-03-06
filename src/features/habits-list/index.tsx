@@ -1,6 +1,7 @@
 import {
   getAllHistoryQueryKey,
   getGoalsQueryKey,
+  getStatisticsQueryKey,
   GoalDto,
   GoalDtoStatusEnum,
   useToggleHabitComplete,
@@ -23,6 +24,7 @@ import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { HabitsListDrawerWrapper } from "@/features/habits-list/ui/drawer-wrapper";
 import { HabitsListSheetWrapper } from "@/features/habits-list/ui/sheet-wrapper";
 import { useQueryClient } from "@tanstack/react-query";
+import dayjs from "dayjs";
 
 type HabitListProps = {
   readOnly?: boolean;
@@ -50,6 +52,17 @@ export function HabitsList({ readOnly, completeOnly }: HabitListProps) {
         queryClient
           .invalidateQueries({
             queryKey: getAllHistoryQueryKey(),
+          })
+          .then();
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getStatisticsQueryKey({
+              period: [
+                dayjs().weekday(0).format("YYYY-MM-DD"),
+                dayjs().weekday(6).format("YYYY-MM-DD"),
+              ],
+            }),
           })
           .then();
       },

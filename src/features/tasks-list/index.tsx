@@ -7,6 +7,7 @@ import {
 import {
   getAllHistoryQueryKey,
   getGoalsQueryKey,
+  getStatisticsQueryKey,
   GoalDto,
   GoalDtoStatusEnum,
   useToggleTaskComplete,
@@ -23,6 +24,7 @@ import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { TasksListDrawerWrapper } from "@/features/tasks-list/ui/drawer-wrapper";
 import { TasksListSheetWrapper } from "@/features/tasks-list/ui/sheet-wrapper";
 import { useQueryClient } from "@tanstack/react-query";
+import dayjs from "dayjs";
 
 type TaskListProps = {
   readOnly?: boolean;
@@ -55,6 +57,17 @@ export function TasksList({ readOnly, completeOnly }: TaskListProps) {
         queryClient
           .invalidateQueries({
             queryKey: getAllHistoryQueryKey(),
+          })
+          .then();
+
+        queryClient
+          .invalidateQueries({
+            queryKey: getStatisticsQueryKey({
+              period: [
+                dayjs().weekday(0).format("YYYY-MM-DD"),
+                dayjs().weekday(6).format("YYYY-MM-DD"),
+              ],
+            }),
           })
           .then();
       },

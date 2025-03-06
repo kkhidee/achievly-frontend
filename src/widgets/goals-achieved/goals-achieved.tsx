@@ -1,4 +1,4 @@
-import { GoalCard, Skeleton } from "@/shared/ui";
+import { EmptyState, GoalCard, Skeleton } from "@/shared/ui";
 import { GoalDto, GoalDtoTypeEnum } from "@/shared/api";
 import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { GoalAchievedDrawerWrapper } from "@/widgets/goals-achieved/ui/drawer-wrapper";
@@ -43,7 +43,8 @@ function GoalsAchieved() {
   }
 
   return (
-    <div className="flex flex-col gap-y-3">
+    <div className="flex h-full flex-col gap-y-3">
+      <EmptyState text="Нет выполненных целей" condition={!goals?.length} />
       {...(goals || [])?.map((goal) =>
         isMobile ? (
           <GoalAchievedDrawerWrapper
