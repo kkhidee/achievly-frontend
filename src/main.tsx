@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import ThemeProvider from "@/providers/theme";
+import ThemeProvider from "@/app/providers/theme";
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from "@/app/constants/core";
-import QueryProvider from "@/providers/query";
+import QueryProvider from "@/app/providers/query";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "@/app/routes";
 import { Toaster } from "@/shared/ui";

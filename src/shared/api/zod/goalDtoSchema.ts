@@ -11,7 +11,7 @@ import {
 export const goalDtoSchema = z.object({
   id: z.number().describe("Goal ID"),
   type: z
-    .enum([GoalDtoTypeEnum.public, GoalDtoTypeEnum.private])
+    .enum([GoalDtoTypeEnum.private, GoalDtoTypeEnum.public])
     .describe("Тип цели"),
   title: z.string().describe("Наименование цели"),
   status: z

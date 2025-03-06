@@ -2,11 +2,13 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import isToday from "dayjs/plugin/isToday";
 import { GoalDto, HabitEntity, HistoryGoalDto, TaskEntity } from "@/shared/api";
 import "dayjs/locale/ru";
 
 dayjs.locale("ru");
 dayjs.extend(utc);
+dayjs.extend(isToday);
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,15 +25,11 @@ export function declension(value: number, words: string[]) {
 
 export function formatTimestampDaysUntilDeadline(timestamp: number) {
   const deadlineDate = dayjs(timestamp);
-
   const currentDay = dayjs(getStartOfDayTimestamp());
-
   const days = deadlineDate.diff(currentDay, "day");
-
   if (days < 0) {
     return `Цель просрочена на ${Math.abs(days)} ${declension(Math.abs(days), ["день", "дня", "дней"])}`;
   }
-
   return `Осталось ${days} ${declension(days, ["день", "дня", "дней"])}`;
 }
 
@@ -41,7 +39,6 @@ export function formatTimestampRuLocale(timestamp: number) {
 
 export const getStartOfDayTimestamp = (date?: number): number => {
   if (date) return dayjs.utc(date).startOf("day").valueOf();
-
   return dayjs.utc().startOf("day").valueOf();
 };
 

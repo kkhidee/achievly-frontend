@@ -5,7 +5,7 @@ export type AllHistoryDto = {
    * @description Полная история
    * @type object | undefined
    */
-  history: {
+  history?: {
     [key: string]: HistoryGoalDto[];
   };
 };

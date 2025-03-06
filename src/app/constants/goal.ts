@@ -37,11 +37,12 @@ export const GoalCategoryIconEnum = {
   default: Image,
 };
 
-export const DEFAULT_HEADER_FORM_VALUES = {
+export const DEFAULT_GOAL_FORM_VALUES = {
   title: "",
-  type: GoalDtoTypeEnum.private,
   category: undefined,
+  type: GoalDtoTypeEnum.private,
   deadlineTimestamp: undefined,
+  note: "",
 };
 
 export enum GoalPersonalType {

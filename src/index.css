@@ -2,119 +2,165 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 84.8 85.2% 34.5%;
-        --chart-2: 20.5 90.2% 48.2%;
-        --chart-3: 221.2 83.2% 53.3%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem
-    }
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 0 0% 3.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 0 0% 3.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0% 3.9%;
+		--primary: 0 0% 9%;
+		--primary-foreground: 0 0% 98%;
+		--secondary: 0 0% 96.1%;
+		--secondary-foreground: 0 0% 9%;
+		--muted: 0 0% 96.1%;
+		--muted-foreground: 0 0% 45.1%;
+		--accent: 0 0% 96.1%;
+		--accent-foreground: 0 0% 9%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 0 0% 89.8%;
+		--input: 0 0% 89.8%;
+		--ring: 0 0% 3.9%;
+		--chart-1: 84.8 85.2% 34.5%;
+		--chart-2: 20.5 90.2% 48.2%;
+		--chart-3: 221.2 83.2% 53.3%;
+		--chart-4: 43 74% 66%;
+		--chart-5: 27 87% 67%;
+		--radius: 0.5rem;
+		--sidebar-background: 0 0% 98%;
+		--sidebar-foreground: 240 5.3% 26.1%;
+		--sidebar-primary: 240 5.9% 10%;
+		--sidebar-primary-foreground: 0 0% 98%;
+		--sidebar-accent: 240 4.8% 95.9%;
+		--sidebar-accent-foreground: 240 5.9% 10%;
+		--sidebar-border: 220 13% 91%;
+		--sidebar-ring: 217.2 91.2% 59.8%}
 
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 84.8 85.2% 34.5%;
-        --chart-2: 20.5 90.2% 48.2%;
-        --chart-3: 221.2 83.2% 53.3%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 160 60% 45%;
-    }
+	.dark {
+		--background: 0 0% 3.9%;
+		--foreground: 0 0% 98%;
+		--card: 0 0% 3.9%;
+		--card-foreground: 0 0% 98%;
+		--popover: 0 0% 3.9%;
+		--popover-foreground: 0 0% 98%;
+		--primary: 0 0% 98%;
+		--primary-foreground: 0 0% 9%;
+		--secondary: 0 0% 14.9%;
+		--secondary-foreground: 0 0% 98%;
+		--muted: 0 0% 14.9%;
+		--muted-foreground: 0 0% 63.9%;
+		--accent: 0 0% 14.9%;
+		--accent-foreground: 0 0% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 0 0% 14.9%;
+		--input: 0 0% 14.9%;
+		--ring: 0 0% 83.1%;
+		--chart-1: 84.8 85.2% 34.5%;
+		--chart-2: 20.5 90.2% 48.2%;
+		--chart-3: 221.2 83.2% 53.3%;
+		--chart-4: 280 65% 60%;
+		--chart-5: 160 60% 45%;
+		--sidebar-background: 240 5.9% 10%;
+		--sidebar-foreground: 240 4.8% 95.9%;
+		--sidebar-primary: 224.3 76.3% 48%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 240 3.7% 15.9%;
+		--sidebar-accent-foreground: 240 4.8% 95.9%;
+		--sidebar-border: 240 3.7% 15.9%;
+		--sidebar-ring: 217.2 91.2% 59.8%;
+		--fc-today-bg-color: theme(colors.muted.DEFAULT);
+	}
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
+	* {
+		@apply border-border;
+	}
 
-    body {
-        @apply bg-background text-foreground;
-    }
+	body {
+		@apply bg-background text-foreground;
+	}
 
-    *::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-        display: none;
-    }
+	*::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
 
-    *::-webkit-scrollbar-track {
-        background: transparent;
-    }
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
 
-    *::-webkit-scrollbar-thumb {
-        @apply bg-neutral-600;
-        border-radius: 20px;
-    }
+	*::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	*::-webkit-scrollbar-thumb {
+		@apply bg-neutral-600;
+		border-radius: 20px;
+	}
 }
 
 @layer components {
-    .goal-list {
-        max-height: calc(100% - 60px);
-        @apply m-0 flex h-full flex-col overflow-y-auto px-4 sm:px-0 data-[state=inactive]:hidden sm:pl-0;
-    }
+	.goal-list {
+		max-height: calc(100% - 60px);
+		@apply m-0 flex h-full flex-col overflow-y-auto px-4 sm:px-0 data-[state=inactive]:hidden sm:pl-0;
+	}
 
-    .goal-calendar-day {
-        @apply inline-flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 aria-selected:border aria-selected:border-green-600 border-transparent rounded-md hover:text-accent-foreground h-8 w-8 p-[18px] font-normal aria-selected:opacity-100
-    }
+	.goal-calendar-day {
+		@apply inline-flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 aria-selected:border aria-selected:border-green-600 border-transparent rounded-md hover:text-accent-foreground h-8 w-8 p-[18px] font-normal aria-selected:opacity-100
+	}
 
-    .goal-calendar-outside-day {
-        @apply goal-calendar-day text-muted-foreground
-    }
+	.goal-calendar-outside-day {
+		@apply goal-calendar-day text-muted-foreground
+	}
 
-    .goal-calendar-row {
-        &:not(:has([data-active=true])) {
-            display: none
-        }
-    }
+	.goal-calendar-row {
+		&:not(:has([data-active=true])) {
+			display: none
+		}
+	}
 
-    .goal-table {
-        margin-top: 0 !important;
-    }
+	.goal-table {
+		margin-top: 0 !important;
+	}
 }
 
-
-
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+.fc-scrollgrid {
+	@apply text-foreground rounded-lg;
+}
+
+.fc-scrollgrid-section > td {
+	@apply rounded-b-lg
+}
+
+.fc-scrollgrid-section > th {
+	@apply rounded-t-lg
+}
+
+.fc .fc-toolbar-title {
+	@apply text-base;
+}
+
+.fc .fc-button {
+	@apply bg-accent hover:bg-accent/60 border-neutral-700 p-2
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+	@apply bg-accent/60 border-neutral-700
+}
+
+.fc-event {
+	@apply bg-green-700 text-accent-foreground rounded-md p-2 shadow-sm overflow-hidden;
 }

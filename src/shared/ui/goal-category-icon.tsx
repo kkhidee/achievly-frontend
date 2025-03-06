@@ -6,8 +6,10 @@ type GoalCategoryIconProps = {
   size?: number;
 };
 
-export function GoalCategoryIcon({ category, size }: GoalCategoryIconProps) {
+function GoalCategoryIcon({ category, size }: GoalCategoryIconProps) {
   const Component = GoalCategoryIconEnum[category || "default"];
 
   return <Component size={size || 64} />;
 }
+
+export { GoalCategoryIcon };
