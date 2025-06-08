@@ -6,7 +6,7 @@ import {
   GoalEntityCategoryEnum,
   GoalEntityStatusEnum,
   GoalEntityTypeEnum,
-} from "@/shared/api";
+} from "../models/GoalEntity";
 
 export const goalEntitySchema = z.object({
   id: z.number().describe("Goal ID"),
