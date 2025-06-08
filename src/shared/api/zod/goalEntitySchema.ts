@@ -2,30 +2,39 @@ import { habitEntitySchema } from "./habitEntitySchema";
 import { historyEntitySchema } from "./historyEntitySchema";
 import { taskEntitySchema } from "./taskEntitySchema";
 import { z } from "zod";
+import {
+  GoalEntityCategoryEnum,
+  GoalEntityStatusEnum,
+  GoalEntityTypeEnum,
+} from "@/shared/api";
 
 export const goalEntitySchema = z.object({
   id: z.number().describe("Goal ID"),
-  type: z.enum(["public", "private"]).describe("Тип цели"),
+  type: z
+    .enum([GoalEntityTypeEnum.public, GoalEntityTypeEnum.private])
+    .describe("Тип цели"),
   title: z.string().describe("Наименование цели"),
-  status: z.enum(["ongoing", "achieved"]).describe("Статус цели"),
+  status: z
+    .enum([GoalEntityStatusEnum.ongoing, GoalEntityStatusEnum.achieved])
+    .describe("Статус цели"),
   note: z.string().describe("Примечание к цели").nullable().nullish(),
   category: z
     .enum([
-      "education",
-      "career",
-      "finance",
-      "health",
-      "sports",
-      "relationships",
-      "travel",
-      "creativity",
-      "business",
-      "personalGrowth",
-      "charity",
-      "hobby",
-      "spirituality",
-      "ecology",
-      "socialActivity",
+      GoalEntityCategoryEnum.education,
+      GoalEntityCategoryEnum.career,
+      GoalEntityCategoryEnum.finance,
+      GoalEntityCategoryEnum.health,
+      GoalEntityCategoryEnum.sports,
+      GoalEntityCategoryEnum.relationships,
+      GoalEntityCategoryEnum.travel,
+      GoalEntityCategoryEnum.creativity,
+      GoalEntityCategoryEnum.business,
+      GoalEntityCategoryEnum.personalGrowth,
+      GoalEntityCategoryEnum.charity,
+      GoalEntityCategoryEnum.hobby,
+      GoalEntityCategoryEnum.spirituality,
+      GoalEntityCategoryEnum.ecology,
+      GoalEntityCategoryEnum.socialActivity,
     ])
     .describe("Категория цели")
     .nullable()
