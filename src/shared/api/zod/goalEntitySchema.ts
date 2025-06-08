@@ -3,7 +3,7 @@ import { historyEntitySchema } from "./historyEntitySchema";
 import { taskEntitySchema } from "./taskEntitySchema";
 import { z } from "zod";
 
-export const goalDtoSchema = z.object({
+export const goalEntitySchema = z.object({
   id: z.number().describe("Goal ID"),
   type: z.enum(["public", "private"]).describe("Тип цели"),
   title: z.string().describe("Наименование цели"),
@@ -40,11 +40,6 @@ export const goalDtoSchema = z.object({
     .describe("Привычки")
     .nullable()
     .nullish(),
-  history: z
-    .array(z.lazy(() => historyEntitySchema))
-    .describe("История цели")
-    .nullable()
-    .nullish(),
   achievedTimestamp: z
     .number()
     .describe("Время завершения цели")
@@ -55,6 +50,11 @@ export const goalDtoSchema = z.object({
     .describe("Время дедлайна цели")
     .nullable()
     .nullish(),
+  history: z
+    .array(z.lazy(() => historyEntitySchema))
+    .describe("История цели")
+    .nullable()
+    .nullish(),
 });
 
-export type GoalDtoSchema = z.infer<typeof goalDtoSchema>;
+export type GoalEntitySchema = z.infer<typeof goalEntitySchema>;

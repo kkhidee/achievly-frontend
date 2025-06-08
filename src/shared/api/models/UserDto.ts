@@ -1,22 +1,29 @@
+import type { EventDto } from "./EventDto";
+import type { GoalDto } from "./GoalDto";
+
 export type UserDto = {
   /**
-   * @description User ID
    * @type number
    */
-  id: number
+  id: number;
   /**
-   * @description Email пользователя
    * @type string
    */
-  email: string
+  email: string;
   /**
-   * @description Имя пользователя
    * @type string
    */
-  username: string
+  username: string;
   /**
-   * @description Изображение пользователя
    * @type string
    */
-  picture: string
-}
+  picture: string;
+  /**
+   * @type array
+   */
+  goals: GoalDto[];
+  /**
+   * @type array
+   */
+  events: EventDto[];
+};

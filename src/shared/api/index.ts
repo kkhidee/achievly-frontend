@@ -2,6 +2,7 @@ export type { CheckAuthQueryKey } from "./hooks/auth/useCheckAuth";
 export type { LogoutMutationKey } from "./hooks/auth/useLogout";
 export type { CreateEventsMutationKey } from "./hooks/events/useCreateEvents";
 export type { DeleteEventMutationKey } from "./hooks/events/useDeleteEvent";
+export type { GetAllEventsQueryKey } from "./hooks/events/useGetAllEvents";
 export type { GetEventsQueryKey } from "./hooks/events/useGetEvents";
 export type { UpdateEventMutationKey } from "./hooks/events/useUpdateEvent";
 export type { AchieveGoalMutationKey } from "./hooks/goals/useAchieveGoal";
@@ -9,6 +10,7 @@ export type { CreateGoalMutationKey } from "./hooks/goals/useCreateGoal";
 export type { DeleteGoalMutationKey } from "./hooks/goals/useDeleteGoal";
 export type { DeleteHabitMutationKey } from "./hooks/goals/useDeleteHabit";
 export type { DeleteTaskMutationKey } from "./hooks/goals/useDeleteTask";
+export type { GetAllGoalsQueryKey } from "./hooks/goals/useGetAllGoals";
 export type { GetAllHistoryQueryKey } from "./hooks/goals/useGetAllHistory";
 export type { GetGoalQueryKey } from "./hooks/goals/useGetGoal";
 export type { GetGoalsQueryKey } from "./hooks/goals/useGetGoals";
@@ -17,6 +19,7 @@ export type { GetStatisticsQueryKey } from "./hooks/goals/useGetStatistics";
 export type { ToggleHabitCompleteMutationKey } from "./hooks/goals/useToggleHabitComplete";
 export type { ToggleTaskCompleteMutationKey } from "./hooks/goals/useToggleTaskComplete";
 export type { UpdateGoalMutationKey } from "./hooks/goals/useUpdateGoal";
+export type { GetAllUsersQueryKey } from "./hooks/users/useGetAllUsers";
 export type { GetProfileQueryKey } from "./hooks/users/useGetProfile";
 export type { AllHistoryDto } from "./models/AllHistoryDto";
 export type {
@@ -49,6 +52,13 @@ export type {
   DeleteEventMutation,
 } from "./models/events/DeleteEvent";
 export type {
+  GetAllEventsQueryParams,
+  GetAllEvents200,
+  GetAllEvents400,
+  GetAllEventsQueryResponse,
+  GetAllEventsQuery,
+} from "./models/events/GetAllEvents";
+export type {
   GetEventsQueryParams,
   GetEvents200,
   GetEvents400,
@@ -64,6 +74,7 @@ export type {
   UpdateEventMutation,
 } from "./models/events/UpdateEvent";
 export type { GoalDto } from "./models/GoalDto";
+export type { GoalEntity } from "./models/GoalEntity";
 export type {
   AchieveGoalPathParams,
   AchieveGoal200,
@@ -99,6 +110,13 @@ export type {
   DeleteTaskMutationResponse,
   DeleteTaskMutation,
 } from "./models/goals/DeleteTask";
+export type {
+  GetAllGoalsQueryParams,
+  GetAllGoals200,
+  GetAllGoals400,
+  GetAllGoalsQueryResponse,
+  GetAllGoalsQuery,
+} from "./models/goals/GetAllGoals";
 export type {
   GetAllHistory200,
   GetAllHistory400,
@@ -162,6 +180,12 @@ export type { StatisticsDto } from "./models/StatisticsDto";
 export type { TaskEntity } from "./models/TaskEntity";
 export type { UserDto } from "./models/UserDto";
 export type {
+  GetAllUsers200,
+  GetAllUsers400,
+  GetAllUsersQueryResponse,
+  GetAllUsersQuery,
+} from "./models/users/GetAllUsers";
+export type {
   GetProfile200,
   GetProfile400,
   GetProfileQueryResponse,
@@ -194,6 +218,12 @@ export type {
   DeleteEventMutationResponseSchema,
 } from "./zod/events/deleteEventSchema";
 export type {
+  GetAllEventsQueryParamsSchema,
+  GetAllEvents200Schema,
+  GetAllEvents400Schema,
+  GetAllEventsQueryResponseSchema,
+} from "./zod/events/getAllEventsSchema";
+export type {
   GetEventsQueryParamsSchema,
   GetEvents200Schema,
   GetEvents400Schema,
@@ -207,6 +237,7 @@ export type {
   UpdateEventMutationResponseSchema,
 } from "./zod/events/updateEventSchema";
 export type { GoalDtoSchema } from "./zod/goalDtoSchema";
+export type { GoalEntitySchema } from "./zod/goalEntitySchema";
 export type {
   AchieveGoalPathParamsSchema,
   AchieveGoal200Schema,
@@ -237,6 +268,12 @@ export type {
   DeleteTask400Schema,
   DeleteTaskMutationResponseSchema,
 } from "./zod/goals/deleteTaskSchema";
+export type {
+  GetAllGoalsQueryParamsSchema,
+  GetAllGoals200Schema,
+  GetAllGoals400Schema,
+  GetAllGoalsQueryResponseSchema,
+} from "./zod/goals/getAllGoalsSchema";
 export type {
   GetAllHistory200Schema,
   GetAllHistory400Schema,
@@ -292,6 +329,11 @@ export type { StatisticsDtoSchema } from "./zod/statisticsDtoSchema";
 export type { TaskEntitySchema } from "./zod/taskEntitySchema";
 export type { UserDtoSchema } from "./zod/userDtoSchema";
 export type {
+  GetAllUsers200Schema,
+  GetAllUsers400Schema,
+  GetAllUsersQueryResponseSchema,
+} from "./zod/users/getAllUsersSchema";
+export type {
   GetProfile200Schema,
   GetProfile400Schema,
   GetProfileQueryResponseSchema,
@@ -310,6 +352,11 @@ export {
   deleteEventMutationKey,
   useDeleteEvent,
 } from "./hooks/events/useDeleteEvent";
+export {
+  getAllEventsQueryKey,
+  getAllEventsQueryOptions,
+  useGetAllEvents,
+} from "./hooks/events/useGetAllEvents";
 export {
   getEventsQueryKey,
   getEventsQueryOptions,
@@ -339,6 +386,11 @@ export {
   deleteTaskMutationKey,
   useDeleteTask,
 } from "./hooks/goals/useDeleteTask";
+export {
+  getAllGoalsQueryKey,
+  getAllGoalsQueryOptions,
+  useGetAllGoals,
+} from "./hooks/goals/useGetAllGoals";
 export {
   getAllHistoryQueryKey,
   getAllHistoryQueryOptions,
@@ -377,6 +429,11 @@ export {
   useUpdateGoal,
 } from "./hooks/goals/useUpdateGoal";
 export {
+  getAllUsersQueryKey,
+  getAllUsersQueryOptions,
+  useGetAllUsers,
+} from "./hooks/users/useGetAllUsers";
+export {
   getProfileQueryKey,
   getProfileQueryOptions,
   useGetProfile,
@@ -386,6 +443,11 @@ export {
   GoalDtoStatusEnum,
   GoalDtoCategoryEnum,
 } from "./models/GoalDto";
+export {
+  GoalEntityTypeEnum,
+  GoalEntityStatusEnum,
+  GoalEntityCategoryEnum,
+} from "./models/GoalEntity";
 export { allHistoryDtoSchema } from "./zod/allHistoryDtoSchema";
 export {
   checkAuth200Schema,
@@ -413,6 +475,12 @@ export {
   deleteEventMutationResponseSchema,
 } from "./zod/events/deleteEventSchema";
 export {
+  getAllEventsQueryParamsSchema,
+  getAllEvents200Schema,
+  getAllEvents400Schema,
+  getAllEventsQueryResponseSchema,
+} from "./zod/events/getAllEventsSchema";
+export {
   getEventsQueryParamsSchema,
   getEvents200Schema,
   getEvents400Schema,
@@ -426,6 +494,7 @@ export {
   updateEventMutationResponseSchema,
 } from "./zod/events/updateEventSchema";
 export { goalDtoSchema } from "./zod/goalDtoSchema";
+export { goalEntitySchema } from "./zod/goalEntitySchema";
 export {
   achieveGoalPathParamsSchema,
   achieveGoal200Schema,
@@ -456,6 +525,12 @@ export {
   deleteTask400Schema,
   deleteTaskMutationResponseSchema,
 } from "./zod/goals/deleteTaskSchema";
+export {
+  getAllGoalsQueryParamsSchema,
+  getAllGoals200Schema,
+  getAllGoals400Schema,
+  getAllGoalsQueryResponseSchema,
+} from "./zod/goals/getAllGoalsSchema";
 export {
   getAllHistory200Schema,
   getAllHistory400Schema,
@@ -510,6 +585,11 @@ export { historyGoalDtoSchema } from "./zod/historyGoalDtoSchema";
 export { statisticsDtoSchema } from "./zod/statisticsDtoSchema";
 export { taskEntitySchema } from "./zod/taskEntitySchema";
 export { userDtoSchema } from "./zod/userDtoSchema";
+export {
+  getAllUsers200Schema,
+  getAllUsers400Schema,
+  getAllUsersQueryResponseSchema,
+} from "./zod/users/getAllUsersSchema";
 export {
   getProfile200Schema,
   getProfile400Schema,

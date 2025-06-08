@@ -9,6 +9,7 @@ export const ZOD_ERROR = {
 export enum RoutesEnum {
   Home = "/",
   Auth = "/auth",
+  Test = "/test",
   GoalsDashboard = "/goals/dashboard",
   GoalsCalendar = "/goals/calendar",
   GoalsPublic = "/goals/public",

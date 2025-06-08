@@ -1,10 +1,14 @@
-import { z } from 'zod'
+import { eventDtoSchema } from "./eventDtoSchema";
+import { goalDtoSchema } from "./goalDtoSchema";
+import { z } from "zod";
 
 export const userDtoSchema = z.object({
-  id: z.number().describe('User ID'),
-  email: z.string().describe('Email пользователя'),
-  username: z.string().describe('Имя пользователя'),
-  picture: z.string().describe('Изображение пользователя'),
-})
+  id: z.number(),
+  email: z.string(),
+  username: z.string(),
+  picture: z.string(),
+  goals: z.array(z.lazy(() => goalDtoSchema)),
+  events: z.array(z.lazy(() => eventDtoSchema)),
+});
 
-export type UserDtoSchema = z.infer<typeof userDtoSchema>
+export type UserDtoSchema = z.infer<typeof userDtoSchema>;

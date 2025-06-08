@@ -10,6 +10,7 @@ const GoalsDashboardPage = lazy(() => import("@/pages/goals-dashboard"));
 const GoalsCalendarPage = lazy(() => import("@/pages/goals-calendar"));
 const GoalsPublicPage = lazy(() => import("@/pages/goals-public"));
 const GoalsStatisticsPage = lazy(() => import("@/pages/goals-statistics"));
+const TestPage = lazy(() => import("@/pages/test"));
 
 export const routes = createBrowserRouter([
   {
@@ -17,6 +18,14 @@ export const routes = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <AuthPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: RoutesEnum.Test,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <TestPage />
       </Suspense>
     ),
   },
